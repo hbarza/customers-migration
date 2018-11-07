@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * CODNITIVE
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE_EULA.html.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.codnitive.com/en/terms-of-service-softwares/
+ * http://www.codnitive.com/fa/terms-of-service-softwares/
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade to newer
+ * versions in the future.
+ *
+ * @category   Codnitive
+ * @package    Codnitive_Migration
+ * @author     Hassan Barza <support@codnitive.com>
+ * @copyright  Copyright (c) 2012 CODNITIVE Co. (http://www.codnitive.com)
+ * @license    http://www.codnitive.com/en/terms-of-service-softwares/ End User License Agreement (EULA 1.0)
+ */
+-->
+<config>
+    <modules>
+        <Codnitive_Migration>
+            <version>1.1.45</version>
+            <title>Migration</title>
+            <link><![CDATA[http://www.codnitive.com/]]></link>
+        </Codnitive_Migration>
+    </modules>
+    <global>
+        <models>
+            <migration>
+                <class>Codnitive_Migration_Model</class>
+            </migration>
+        </models>
+        <helpers>
+            <migration>
+                <class>Codnitive_Migration_Helper</class>
+            </migration>
+        </helpers>
+        <resources>
+            <migration_setup>
+                <setup>
+                    <module>Codnitive_Migration</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </migration_setup>
+            <migration_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </migration_write>
+            <migration_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </migration_read>
+        </resources>
+        
+        <blocks>
+            <migration>
+                <class>Codnitive_Migration_Block</class>
+            </migration>
+        </blocks>
+        <template>
+            <email>
+                <migration_customer_newsiteaccount_email_template translate="label" module="creditmoney">
+                    <label>New Site Account Information</label>
+                    <file>codnitive/migration/new_site_account.html</file>
+                    <type>html</type>
+                </migration_customer_newsiteaccount_email_template>
+            </email>
+        </template>
+    </global>
+    
+    <admin>
+        <routers>
+            <migration>
+                <use>admin</use>
+                <args>
+                    <module>Codnitive_Migration</module>
+                    <frontName>migration</frontName>
+                </args>
+            </migration>
+        </routers>
+    </admin>
+    
+    <default>
+        <migration>
+            <customer>
+                <newsiteaccount_email_template>migration_customer_newsiteaccount_email_template</newsiteaccount_email_template>
+                <newsiteaccount_email_identity>support</newsiteaccount_email_identity>
+            </customer>
+        </migration>
+    </default>
+</config>
